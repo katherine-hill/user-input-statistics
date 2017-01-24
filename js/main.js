@@ -6,7 +6,7 @@ let userSum = 0; //user total
 let i= 0; //user entries
 let average = 0; //average
 let enteredAmt = document.querySelector('.input-container span');
-const mainForm = document.querySelector('.form');
+const mainForm = document.querySelector('.form-one');
 const addButton = document.querySelector('.addbutton');
 const finishedButton = document.querySelector('.finishedbutton');
 
@@ -24,39 +24,42 @@ addButton.addEventListener('click', (event) => {
 
 //pulling global 'userSum' and adding to userInput to create new
 //global user sum
-  userSum = userInput + userSum;
-  i++;
-  average = userSum / i;
 
   if (isNaN(userInput)) {
     alert("Try again, kiddo.")
-  };
+  } else {
+    userSum = userInput + userSum;
+    i++;
+    average = userSum / i;
+  }
 
   const input = document.querySelector('.output-container .user-input p');
   input.innerHTML = `Current input is ${userInput}!!!!`;
-
-  const sum = document.querySelector('.output-container .user-sum p');
-  sum.innerHTML = `Current sum is ${userSum}!!!!!!`;
+  //
+  // const sum = document.querySelector('.output-container .user-sum p');
+  // sum.innerHTML = `Current sum is ${userSum}!!!!!!`;
 
   const entries = document.querySelector('.output-container .user-entries p');
   entries.innerHTML = `Current entries ${i}!!!!!`;
 
-  const aver = document.querySelector('.output-container .user-average p');
-  aver.innerHTML = `Current average is ${average}!!!!`;
+  // const aver = document.querySelector('.output-container .user-average p');
+  // aver.innerHTML = `Current average is ${average}!!!!`;
+
+  mainForm.reset();
 });
 
 //separate listen for finished click & innerHTML
 finishedButton.addEventListener('click', (event) => {
 
   let input = document.querySelector('.finaloutput .user-input p');
-  input.innerHTML = `Current entry is ${userInput}`;
+  input.innerHTML = `Last entry was ${userInput}.`;
 
   let sum = document.querySelector('.finaloutput .user-sum p');
-  sum.innerHTML = `Current sum is ${userSum}`;
+  sum.innerHTML = `Overall sum is ${userSum}.`;
 
   let entries = document.querySelector('.finaloutput .user-entries p');
-  entries.innerHTML = `Current entries is ${i}`;
+  entries.innerHTML = `Final number of entries is ${i}.`;
 
   let aver = document.querySelector('.finaloutput .user-average p');
-  aver.innerHTML = `Current average is ${average}`;
+  aver.innerHTML = `Final average is ${average}.`;
 });
